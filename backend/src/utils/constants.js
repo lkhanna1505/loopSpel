@@ -1,0 +1,5 @@
+MAX_SPEED = 15 // km / h
+GPS_INTERVAL = 5 // sec
+MIN_DISTANCE_FILTER = 5 // meters
+MAX_ACCURACY_ALLOWED = 50 // meters
+GRID_CAPTURE_THRESHOLD = 0.5 // 50%
