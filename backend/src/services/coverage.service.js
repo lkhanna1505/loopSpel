@@ -74,6 +74,7 @@
 ==file DB change to test the app for now==
 ==========================================
 */
+// const { readData, writeData } = require("../utils/fileDB");
 
 const { readData, writeData } = require("../utils/fileDB");
 const {
@@ -106,6 +107,15 @@ const updateCoverage = async (userId, geohash, distance) => {
     );
 
     // Capture logic
+    let captures = readData("captures.json");
+
+    captures.push({
+        geohash,
+        from: previousOwner || null,
+        to: userId,
+        timestamp: new Date(),
+    });
+
     if (record.coveragePercent >= CAPTURE_THRESHOLD) {
         let grid = grids.find((g) => g.geohash === geohash);
 
@@ -132,6 +142,7 @@ const updateCoverage = async (userId, geohash, distance) => {
     );
     writeData("coverage.json", coverage);
     writeData("grids.json", grids);
+    writeData("captures.json", captures);
 
     return record;
 };

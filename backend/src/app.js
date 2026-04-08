@@ -34,4 +34,18 @@ app.use("/api/leaderboard", leaderboardRoutes);
 const debugRoutes = require("./routes/debug.routes");
 app.use("/api/debug", debugRoutes);
 
+//friend routes
+const friendRoutes = require("./routes/friend.routes");
+// console.log("TYPE:", typeof getFriendLeaderboard);
+app.use("/api/friends", friendRoutes);
+
+//friends
+const activityRoutes = require("./routes/activity.routes");
+app.use("/api/activity", activityRoutes);
+
+//leaderboard
+const { getFriendLeaderboard } = require("./controllers/leaderboard.controller");
+// router.get("/friends", protect, getFriendLeaderboard);
+app.use("/api/leaderboard", leaderboardRoutes);
+
 module.exports = app;
