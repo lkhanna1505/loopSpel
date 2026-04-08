@@ -11,4 +11,8 @@ app.use(express.json());
 const healthRoutes = require("./routes/health.routes");
 app.use("/api/health", healthRoutes);
 
+const authRoutes = require("./routes/auth.routes");
+
+app.use("/api/auth", authRoutes);
+
 module.exports = app;
