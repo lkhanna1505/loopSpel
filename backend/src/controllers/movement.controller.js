@@ -2,6 +2,8 @@ const { calculateDistance } = require("../services/distance.service");
 const { getGeohash } = require("../services/geohash.service");
 const { updateCoverage } = require("../services/coverage.service");
 const { MIN_DISTANCE_METERS, MAX_DISTANCE_PER_POINT } = require("../utils/constants");
+const { readData, findAndUpdate } = require("../utils/fileDB");
+const { MAX_SPEED_KMH } = require("../utils/constants");
 
 const lastPoints = new Map(); // temp memory (later Redis)
 
@@ -19,10 +21,11 @@ const processBatch = async (req, res) => {
         for (let point of points) {
             const { lat, lng } = point;
 
-            const prev = lastPoints.get(userId);
+            const lastPoints = readData("lastPoints.json");
+            const prev = lastPoints.find((p) => p.userId === userId);
 
             if (!prev) {
-                lastPoints.set(userId, point);
+                findAndUpdate("lastPoints.json", "userId", userId, point);
                 continue;
             }
 

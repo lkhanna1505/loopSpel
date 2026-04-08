@@ -19,13 +19,25 @@
 ==file DB change to test the app for now==
 ==========================================
 */
-
 const { readData } = require("../utils/fileDB");
+const geohash = require("ngeohash");
 
 const getViewportGrids = (req, res) => {
+    const { lat, lng } = req.query;
+
+    if (!lat || !lng) {
+        return res.status(400).json({ message: "lat/lng required" });
+    }
+
+    const centerHash = geohash.encode(Number(lat), Number(lng), 5);
+
     const grids = readData("grids.json");
 
-    res.json(grids.slice(0, 100));
+    const nearby = grids.filter((g) =>
+        g.geohash.startsWith(centerHash.slice(0, 4))
+    );
+
+    res.json(nearby);
 };
 
 module.exports = { getViewportGrids };

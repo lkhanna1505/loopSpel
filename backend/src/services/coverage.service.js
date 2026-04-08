@@ -122,6 +122,8 @@ const updateCoverage = async (userId, geohash, distance) => {
             grid.ownerId = userId;
             grid.ownerCoverage = record.coveragePercent;
             grid.lastCapturedAt = new Date();
+
+            console.log(`🏆 ${userId} captured ${geohash}`);
         }
     }
 
