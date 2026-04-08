@@ -3,6 +3,7 @@ const connectDB = require("./config/db");
 const { PORT } = require("./config/env");
 
 const startServer = async () => {
+    // Remove this when connecting to mongoDB database
     // await connectDB();
 
     app.listen(PORT, () => {

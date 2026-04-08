@@ -35,8 +35,12 @@ const { JWT_SECRET } = require("../config/env");
 
 const protect = (req, res, next) => {
     // ✅ DEV BYPASS
+    // if (process.env.DEV_MODE === "true") {
+    //     req.user = "dev-user-id-123"; // fake user id
+    //     return next();
+    // }
     if (process.env.DEV_MODE === "true") {
-        req.user = "dev-user-id-123"; // fake user id
+        req.user = "660000000000000000000001"; // dummy ObjectId format
         return next();
     }
 

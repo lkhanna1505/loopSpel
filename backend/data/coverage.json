@@ -1,0 +1,20 @@
+[
+  {
+    "userId": "660000000000000000000001",
+    "geohash": "ttnfucn",
+    "distanceCovered": 469.93374740961286,
+    "coveragePercent": 0.7832229123493548
+  },
+  {
+    "userId": "660000000000000000000001",
+    "geohash": "ttnfucq",
+    "distanceCovered": 221.94235116800928,
+    "coveragePercent": 0.3699039186133488
+  },
+  {
+    "userId": "660000000000000000000001",
+    "geohash": "ttnfucr",
+    "distanceCovered": 369.9028455320722,
+    "coveragePercent": 0.6165047425534537
+  }
+]
